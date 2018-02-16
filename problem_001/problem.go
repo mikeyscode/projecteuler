@@ -1,14 +1,33 @@
 package problem_001
 
-// solveProblem will list all the natural numbers below a given input that are multiples of 3 or 5 and then
-// sum of these multiples is 23.
-func solveProblem(input int) int {
-	var sum int
-	for i := 1; i < input; i++ {
-		if i%3 == 0 || i%5 == 0 {
-			sum += i
-		}
+func solveProblem(x, y, max int) int {
+	lcm := calculateLowestCommonMultiple(x, y)
+	sumX := calculateSumUptoNumber(x, max)
+	sumY := calculateSumUptoNumber(y, max)
+	sumLCM := calculateSumUptoNumber(lcm, max)
+
+	return sumX + sumY - sumLCM
+}
+
+// calculateLeastCommonMultiple works out the lowest common multiple for two numbers
+func calculateLowestCommonMultiple(x, y int) int {
+	multiple := x
+	if x < y {
+		multiple = y
 	}
 
-	return sum
+	for {
+		if multiple%x == 0 && multiple%y == 0 {
+			return multiple
+		}
+
+		multiple++
+	}
+}
+
+// calculateSumUptoNumber works out the sum of numbers up to maximum amount divided by n
+// the sum of all numbers less than n that are divisible by d is calcualted by:
+// n * (max-1 / n) * ((max-1 / n)+1) / 2
+func calculateSumUptoNumber(n, max int) int {
+	return n * ((max - 1) / n) * (((max - 1) / n) + 1) / 2
 }
