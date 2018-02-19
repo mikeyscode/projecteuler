@@ -2,20 +2,20 @@ package problem_002
 
 import "math"
 
-func nthFib(input float64) float64 {
-	return math.Round((math.Pow(math.Phi, input) - math.Pow((1-math.Phi), input)) / math.Sqrt(5))
+func nthFib(n float64) float64 {
+	return math.Round((math.Pow(math.Phi, n) - math.Pow((1-math.Phi), n)) / math.Sqrt(5))
 }
 
-func solveProblem(cap float64) float64 {
-	counter := 3
+func solveProblem(limit float64) float64 {
+	i := 3
 	sum := 0.0
 	for {
-		val := nthFib(float64(counter))
-		if val > cap {
+		val := nthFib(float64(i))
+		if val > limit {
 			break
 		}
 		sum += val
-		counter += 3
+		i += 3
 	}
 
 	return sum
