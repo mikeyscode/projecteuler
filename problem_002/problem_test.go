@@ -3,8 +3,8 @@ package problem_002
 import "testing"
 
 type TestCase struct {
-	input    int
-	expected int
+	input    float64
+	expected float64
 }
 
 var tests = []TestCase{
@@ -15,7 +15,7 @@ func TestSolveProblem(t *testing.T) {
 	for _, test := range tests {
 		result := solveProblem(test.input)
 		if result != test.expected {
-			t.Errorf("Expected [%d], got [%d] for input [%d]", test.expected, result, test.input)
+			t.Errorf("Expected [%v], got [%v] for input [%v]", test.expected, result, test.input)
 		}
 	}
 }

@@ -1,19 +1,22 @@
 package problem_002
 
-func evenFibSum(cap int) int {
-	sum, x, y := 0, 0, 1
+import "math"
 
-	for y < cap {
-		y, x = x+y, y
+func nthFib(input float64) float64 {
+	return math.Round((math.Pow(math.Phi, input) - math.Pow((1-math.Phi), input)) / math.Sqrt(5))
+}
 
-		if y%2 == 0 {
-			sum += y
+func solveProblem(cap float64) float64 {
+	counter := 3
+	sum := 0.0
+	for {
+		val := nthFib(float64(counter))
+		if val > cap {
+			break
 		}
+		sum += val
+		counter += 3
 	}
 
 	return sum
-}
-
-func solveProblem(cap int) int {
-	return evenFibSum(cap)
 }
