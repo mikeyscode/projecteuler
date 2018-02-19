@@ -8,7 +8,7 @@ type TestCase struct {
 }
 
 var tests = []TestCase{
-	{4000000, 100},
+	{4000000, 4613732},
 }
 
 func TestSolveProblem(t *testing.T) {
